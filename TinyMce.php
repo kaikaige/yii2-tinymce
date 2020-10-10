@@ -4,7 +4,6 @@
  * @link http://2amigos.us
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-
 namespace kaikaige\tinymce;
 
 use yii\helpers\Html;
@@ -90,7 +89,6 @@ class TinyMce extends InputWidget
         $this->clientOptions['toolbar'] = $this->toolbar;
         $this->clientOptions['images_upload_url'] = Url::to($this->uploadUrl);
         $this->clientOptions['images_upload_base_path'] = $this->basePath;
-
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init($options);";
         $view->registerJs(implode("\n", $js));
