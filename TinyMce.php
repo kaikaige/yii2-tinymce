@@ -32,20 +32,20 @@ class TinyMce extends InputWidget
      */
     public $clientOptions = [];
 
-    public $uploadUrl = ['site/upload'];
+    public $uploadAction = ['site/upload'];
 
-    public $basePath = "/";
+    public $preUrl = "/";
 
-    public $height = 400;
+    public $height = 600;
 
     public $plugins = [
-        "image",
+        "image fullscreen",
         "advlist autolink lists link charmap print preview anchor",
         "searchreplace visualblocks code fullscreen",
         "insertdatetime media table contextmenu paste ",
     ];
 
-    public $toolbar = "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image";
+    public $toolbar = "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image fullscreen";
 
     /**
      * @inheritdoc
@@ -87,8 +87,8 @@ class TinyMce extends InputWidget
         $this->clientOptions['height'] = $this->height . "px";
         $this->clientOptions['plugins'] = $this->plugins;
         $this->clientOptions['toolbar'] = $this->toolbar;
-        $this->clientOptions['images_upload_url'] = Url::to($this->uploadUrl);
-        $this->clientOptions['images_upload_base_path'] = $this->basePath;
+        $this->clientOptions['images_upload_url'] = Url::to($this->uploadAction);
+        $this->clientOptions['images_upload_base_path'] = $this->preUrl;
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init($options);";
         $view->registerJs(implode("\n", $js));
